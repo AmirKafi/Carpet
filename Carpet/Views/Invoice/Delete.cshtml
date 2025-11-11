@@ -1,0 +1,35 @@
+@model Carpet.Models.DTOs.InvoiceDto
+@{
+    ViewData["Title"] = "حذف فاکتور";
+}
+
+<div class="container py-4">
+    <div class="card">
+        <div class="card-header bg-danger text-white">
+            <h4>حذف فاکتور</h4>
+        </div>
+        <div class="card-body">
+            <h5>آیا از حذف این فاکتور اطمینان دارید؟</h5>
+            
+            <div class="mt-3">
+                <strong>شماره فاکتور:</strong> @Model.InvoiceNo<br>
+                <strong>نام مشتری:</strong> @Model.CustomerName<br>
+                <strong>تاریخ فاکتور:</strong> @Model.InvoiceDate.ToString("yyyy/MM/dd")<br>
+                <strong>مبلغ نهایی:</strong> @Model.FinalTotal.ToString("N0") تومان
+            </div>
+
+            <form asp-action="Delete" method="post" class="mt-4">
+                <input type="hidden" asp-for="Id" />
+                <button type="submit" class="btn btn-danger">حذف</button>
+                <a href="@Url.Action("Index", "Invoice")" class="btn btn-secondary">انصراف</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+<style>
+    body {
+        direction: rtl;
+    }
+</style>
+

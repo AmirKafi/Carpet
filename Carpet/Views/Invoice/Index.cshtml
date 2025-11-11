@@ -1,0 +1,60 @@
+@model IEnumerable<Carpet.Models.DTOs.InvoiceDto>
+@{
+    ViewData["Title"] = "لیست فاکتورها";
+}
+
+<div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>لیست فاکتورها</h2>
+        <a href="@Url.Action("Create", "Invoice")" class="btn btn-primary">➕ فاکتور جدید</a>
+    </div>
+
+    @if (Model.Any())
+    {
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>شماره فاکتور</th>
+                        <th>نام مشتری</th>
+                        <th>تاریخ فاکتور</th>
+                        <th>مبلغ کل</th>
+                        <th>مالیات</th>
+                        <th>مبلغ نهایی</th>
+                        <th>عملیات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var invoice in Model)
+                    {
+                        <tr>
+                            <td>@invoice.InvoiceNo</td>
+                            <td>@invoice.CustomerName</td>
+                            <td>@invoice.InvoiceDate.ToString("yyyy/MM/dd")</td>
+                            <td>@invoice.TotalAmount.ToString("N0") تومان</td>
+                            <td>@invoice.Tax.ToString("N0") تومان</td>
+                            <td>@invoice.FinalTotal.ToString("N0") تومان</td>
+                            <td>
+                                <a href="@Url.Action("Details", "Invoice", new { id = invoice.Id })" class="btn btn-sm btn-info">جزئیات</a>
+                                <a href="@Url.Action("Delete", "Invoice", new { id = invoice.Id })" class="btn btn-sm btn-danger" onclick="return confirm('آیا از حذف این فاکتور اطمینان دارید؟');">حذف</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-info">
+            هیچ فاکتوری یافت نشد. <a href="@Url.Action("Create", "Invoice")">فاکتور جدید ایجاد کنید</a>
+        </div>
+    }
+</div>
+
+<style>
+    body {
+        direction: rtl;
+    }
+</style>
+
