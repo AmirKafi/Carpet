@@ -3114,19 +3114,19 @@
     ]
   },
   "packageFolders": {
-    "/home/amirkafi/.nuget/packages/": {}
+    "C:\\Users\\doost\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/amirkafi/RiderProjects/Carpet/Carpet/Carpet.csproj",
+      "projectUniqueName": "G:\\Projects\\Back-End & MVC\\Carpet\\Carpet\\Carpet.csproj",
       "projectName": "Carpet",
-      "projectPath": "/home/amirkafi/RiderProjects/Carpet/Carpet/Carpet.csproj",
-      "packagesPath": "/home/amirkafi/.nuget/packages/",
-      "outputPath": "/home/amirkafi/RiderProjects/Carpet/Carpet/obj/",
+      "projectPath": "G:\\Projects\\Back-End & MVC\\Carpet\\Carpet\\Carpet.csproj",
+      "packagesPath": "C:\\Users\\doost\\.nuget\\packages\\",
+      "outputPath": "G:\\Projects\\Back-End & MVC\\Carpet\\Carpet\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/amirkafi/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\doost\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net9.0"
@@ -3188,7 +3188,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/9.0.302/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.307/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

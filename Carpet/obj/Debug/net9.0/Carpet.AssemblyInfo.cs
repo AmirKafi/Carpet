@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Carpet")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c123b8b2c36b73810b88136d4cd9723edbaef254")]
 [assembly: System.Reflection.AssemblyProductAttribute("Carpet")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Carpet")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
