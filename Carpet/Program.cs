@@ -22,14 +22,10 @@ builder.Services.AddScoped<ICarpetRepository, CarpetRepository>();
 
 var app = builder.Build();
 
-// Ensure database is created (for development only)
-if (app.Environment.IsDevelopment())
+using (var scope = app.Services.CreateScope())
 {
-    using (var scope = app.Services.CreateScope())
-    {
-        var context = scope.ServiceProvider.GetRequiredService<CarpetDbContext>();
-        context.Database.EnsureCreated();
-    }
+    var context = scope.ServiceProvider.GetRequiredService<CarpetDbContext>();
+    context.Database.Migrate();
 }
 
 // Configure the HTTP request pipeline.
