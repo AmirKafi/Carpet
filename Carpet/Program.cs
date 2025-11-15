@@ -22,6 +22,7 @@ builder.Services.AddScoped<ICarpetRepository, CarpetRepository>();
 
 var app = builder.Build();
 
+// Ensure database is created (for development only)
 using (var scope = app.Services.CreateScope())
 {
     var context = scope.ServiceProvider.GetRequiredService<CarpetDbContext>();
