@@ -4,7 +4,13 @@ using Carpet.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Configure Kestrel to listen on all interfaces (0.0.0.0) at port 8080
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.ListenAnyIP(8080);
+});
+
+// Add services to the container
 builder.Services.AddControllersWithViews()
     .AddJsonOptions(options =>
     {
@@ -22,25 +28,29 @@ builder.Services.AddScoped<ICarpetRepository, CarpetRepository>();
 
 var app = builder.Build();
 
-// Ensure database is created (for development only)
+// Apply migrations safely
 using (var scope = app.Services.CreateScope())
 {
     var context = scope.ServiceProvider.GetRequiredService<CarpetDbContext>();
-    context.Database.Migrate();
+    try
+    {
+        context.Database.Migrate();
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine("⚠️ Migration failed or pending changes exist. Skipping auto-migrate: " + ex.Message);
+    }
 }
-app.Urls.Add("http://0.0.0.0:8080");
 
-// Configure the HTTP request pipeline.
+// Configure the HTTP request pipeline
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
 app.UseHttpsRedirection();
 app.UseRouting();
-
 app.UseAuthorization();
 
 app.MapStaticAssets();
@@ -49,6 +59,5 @@ app.MapControllerRoute(
         name: "default",
         pattern: "{controller=Home}/{action=Index}/{id?}")
     .WithStaticAssets();
-
 
 app.Run();
